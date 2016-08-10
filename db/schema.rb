@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808025519) do
+ActiveRecord::Schema.define(version: 20160810001254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,13 @@ ActiveRecord::Schema.define(version: 20160808025519) do
     t.string  "damage"
   end
 
+  create_table "character_proficiencies", force: :cascade do |t|
+    t.integer "proficiencie_id", null: false
+    t.integer "character_id",    null: false
+  end
+
   create_table "characters", force: :cascade do |t|
-    t.integer "character_id",      null: false
+    t.integer "user_id",           null: false
     t.string  "name"
     t.string  "class"
     t.string  "background"
@@ -76,7 +81,28 @@ ActiveRecord::Schema.define(version: 20160808025519) do
     t.integer "pp"
   end
 
+  create_table "game_characters", force: :cascade do |t|
+    t.integer "game_id",      null: false
+    t.integer "character_id", null: false
+  end
+
+  create_table "game_users", force: :cascade do |t|
+    t.integer "user_id",                    null: false
+    t.integer "game_id",                    null: false
+    t.string  "role",    default: "player", null: false
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.integer "user_id",                  null: false
+    t.string  "name",                     null: false
+    t.text    "description",              null: false
+    t.integer "visibility",   default: 0, null: false
+    t.text    "public_notes"
+    t.text    "dm_notes"
+  end
+
   create_table "proficiencies", force: :cascade do |t|
+    t.string "name", null: false
   end
 
   create_table "spell_castings", force: :cascade do |t|
