@@ -4,6 +4,11 @@ class CreateSpells < ActiveRecord::Migration
       t.integer :character_id, null: false
       t.integer :level
       t.string :name
+      t.string :type
+      t.string :casting_time
+      t.string :range
+      t.string :components
+      t.string :duration
       t.text :description
     end
   end

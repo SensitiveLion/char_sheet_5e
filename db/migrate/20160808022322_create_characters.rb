@@ -42,9 +42,6 @@ class CreateCharacters < ActiveRecord::Migration
       t.string :slight
       t.string :stealth
       t.string :survival
-      t.string :casting_ability
-      t.string :spell_dc
-      t.string :spell_atk
       t.string :passive_wis
       t.integer :hit_Points
       t.integer :cp

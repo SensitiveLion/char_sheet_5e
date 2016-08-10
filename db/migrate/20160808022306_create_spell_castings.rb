@@ -3,6 +3,9 @@ class CreateSpellCastings < ActiveRecord::Migration
     create_table :spell_castings do |t|
       t.integer :character_id, null: false
       t.string :spell_casting_class
+      t.string :casting_ability
+      t.string :spell_dc
+      t.string :spell_atk
       t.integer :lv1_slots
       t.integer :lv2_slots
       t.integer :lv3_slots

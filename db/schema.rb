@@ -70,9 +70,6 @@ ActiveRecord::Schema.define(version: 20160810001254) do
     t.string  "slight"
     t.string  "stealth"
     t.string  "survival"
-    t.string  "casting_ability"
-    t.string  "spell_dc"
-    t.string  "spell_atk"
     t.string  "passive_wis"
     t.integer "hit_Points"
     t.integer "cp"
@@ -108,6 +105,9 @@ ActiveRecord::Schema.define(version: 20160810001254) do
   create_table "spell_castings", force: :cascade do |t|
     t.integer "character_id",        null: false
     t.string  "spell_casting_class"
+    t.string  "casting_ability"
+    t.string  "spell_dc"
+    t.string  "spell_atk"
     t.integer "lv1_slots"
     t.integer "lv2_slots"
     t.integer "lv3_slots"
@@ -123,6 +123,11 @@ ActiveRecord::Schema.define(version: 20160810001254) do
     t.integer "character_id", null: false
     t.integer "level"
     t.string  "name"
+    t.string  "type"
+    t.string  "casting_time"
+    t.string  "range"
+    t.string  "components"
+    t.string  "duration"
     t.text    "description"
   end
 
