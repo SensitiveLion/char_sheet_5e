@@ -1,7 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+
+@proficiencies = [ 'strength', 'dexterity', 'intelligence', 'wisdom',
+  'charisma', 'acrobatics', 'animal handling', 'arcana', 'athletics',
+  'deception', 'history', 'insight',  'intimidation', 'investigation',
+  'medicine',  'nature', 'perception', 'performance', 'persuasion',
+  'religion', 'slight of hand', 'stealth', 'survival']
+
+@proficiencies.each do |prof|
+  Proficiency.create!(name: "#{prof}")
+end

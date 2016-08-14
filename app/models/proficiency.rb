@@ -9,3 +9,4 @@ class Proficiency < ActiveRecord::Base
   def downcase_proficiency_name
     name.downcase!
   end
+end

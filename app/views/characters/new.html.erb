@@ -1,0 +1,69 @@
+@character_filled
+<%= form_for @character do |f| %>
+  <% @character_fields.each do |field| %>
+    <div class="field">
+      <%= f.label :"#{field}", "#{field}" %>
+      <%= f.text_field :"#{field}" %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Save Character" %>
+  </div>
+<% end %>
+
+<%= form_for @spells do |f| %>
+  <% @spell_fields.each do |field| %>
+    <div class="field">
+      <%= f.label :"#{field}", "#{field}" %>
+      <%= f.text_field :"#{field}" %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Save Spells" %>
+  </div>
+<% end %>
+
+
+<%= form_for @spell_casting do |f| %>
+  <% @spell_casting_fields.each do |field| %>
+    <div class="field">
+      <%= f.label :"#{field}", "#{field}" %>
+      <%= f.text_field :"#{field}" %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Save Spell Stats" %>
+  </div>
+<% end %>
+
+<%= form_for @attacks do |f| %>
+  <% @attack_fields.each do |field| %>
+    <div class="field">
+      <%= f.label :"#{field}", "#{field}" %>
+      <%= f.text_field :"#{field}" %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Save attack Stats" %>
+  </div>
+<% end %>
+
+<%= form_for @text_box do |f| %>
+  <div class="field">
+    <%= f.label :text_box, "languages" %>
+    <%= f.text_area :text_box %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :name, value: "languages" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save languages" %>
+  </div>
+<% end %>
+

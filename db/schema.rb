@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810001254) do
+ActiveRecord::Schema.define(version: 20160812031515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20160810001254) do
   create_table "characters", force: :cascade do |t|
     t.integer "user_id",           null: false
     t.string  "name"
-    t.string  "class"
+    t.string  "character_class"
     t.string  "background"
     t.string  "race"
     t.string  "alignment"
