@@ -1,20 +1,26 @@
 class AttacksController < ApplicationController
-  def index
-  end
+  before_action :authenticate_user!
 
   def create
     @attack = Attack.new(attack_params)
-    @attack.user = current_user
+    if params["text_box"]["character_id"].nil?
+      @character = params["character"]
+    else
+      @character = Character.find(params["text_box"]["character_id"])
+    end
+    @attack.character = @character
     if @attack.save
       flash[:notice] = "you have added a new Character!"
+      redirect_to character_path(@character)
     else
-      render :new
+      flash[:notice] = "nope"
+      redirect_to character_path(@character)
     end
   end
 
   protected
 
   def attack_params
-      params.require(:attack).permit(:name)
+      params.require(:attack).permit(:name, :attack, :damage)
   end
 end

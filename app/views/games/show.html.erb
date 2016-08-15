@@ -1,0 +1,41 @@
+<h1><%= @game.name %></h1>
+
+<h3><%= @game.description %></h3>
+
+<h2>players</h2>
+<% if current_user == @game.user %>
+  <% @players.each do |player| %>
+    <% if player.role == "player" %>
+      <p>
+        <%= player.user.username %> <%= link_to "make this user a dm", game_user_path(player), method: :put %>
+      </p>
+    <% elsif player.role == "dm" %>
+      <p>
+        <%= player.user.username %> <%= link_to "make this dm a player", game_user_path(player), method: :put %>
+      </p>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if current_user == @game.user %>
+  <%= form_for @game_user do |f| %>
+    <div class="field">
+      <%= f.label :user_id, "add player by username" %>
+      <%= f.text_field :user_id %>
+    </div>
+
+    <div class="field">
+      <%= f.hidden_field :game_id, value: params[:id] %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Add User"%>
+    </div>
+  <% end %>
+<% end %>
+
+<h2>characters</h2>
+<% @characters.each do |character| %>
+  <p><%= link_to character.name, character_path(character) %></p>
+<% end %>
+<h5><%= link_to "add a new character", new_game_character_path(game_id: @game) %></h5>

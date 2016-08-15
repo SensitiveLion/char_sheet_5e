@@ -1,0 +1,18 @@
+<h1>Add character to <%= @game.name %></h1>
+<%= form_for @game_character do |f| %>
+  <div class="field">
+    <%= f.label :character, "Character" %>
+    <%= f.collection_select :character, @character, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :game, value: @game.id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Add character to game"%>
+  </div>
+<% end %>
+
+
+

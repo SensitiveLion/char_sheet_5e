@@ -1,4 +1,35 @@
-<p>
-  Modify me in `app/views/homes/index.html.erb` or change the root directive in
-  `config/routes.rb`
-</p>
+<% if current_user != nil %>
+
+  <% if @games.empty? %>
+    <p>you have no games</p>
+  <% else %>
+    <h1>characters</h1>
+    <% @games.each do |game| %>
+      <p><%= link_to game.name, game_path(game) %></p>
+    <% end %>
+  <% end %>
+  <h5><%= link_to "add a new game", new_game_path %></h5>
+
+  <% if @user_games.empty? %>
+    <p>you are in no games</p>
+  <% else %>
+    <h1>your games</h1>
+    <% @user_games.each do |game_user| %>
+      <p><%= link_to game_user.name, game_user_path(game_user) %></p>
+    <% end %>
+  <% end %>
+
+  <% if @characters.empty? %>
+    you have no characters
+  <% else %>
+    <h1>characters</h1>
+    <% @characters.each do |character| %>
+      <p><%= link_to character.name, character_path(character) %></p>
+    <% end %>
+  <% end %>
+  <h5><%= link_to "Create a new character", new_character_path %></h5>
+<% else %>
+  <p>
+    sign in to do things
+  </p>
+<% end %>

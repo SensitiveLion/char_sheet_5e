@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :spell_castings
   resources :attacks
   resources :text_boxes
+  resources :game_characters
+  resources :game_users
 end

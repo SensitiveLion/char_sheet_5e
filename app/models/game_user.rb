@@ -1,8 +1,8 @@
 class GameUser < ActiveRecord::Base
-  validates :game, presence: true
-  validates :user, presence: true
+  belongs_to :game
+  belongs_to :user
 
-  validates :user, presence: true
-  validates :game, presence: true
-  validates :user, uniqueness: { scope: :game }
+  validates :user_id, presence: true
+  validates :game_id, presence: true
+  validates :user_id, uniqueness: { scope: :game }
 end
